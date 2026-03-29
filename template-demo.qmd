@@ -20,17 +20,77 @@ author:
 format: teleprompt-revealjs
 ---
 
-# Core capabilities
+## Core capabilities
 
-Here is a long sentence to demonstrate that the teleprompt-revealjs format will put all the text on the left side of the slide, taking up no more than 60% of the slide width.
+Here is a long sentence to demonstrate that the teleprompt-revealjs format will put all the text on the left side of the slide, taking up no more than 66% of the slide width.
 
 Note that the hamburger menu and the slide navigation controls are forced to the background color so that they will not be visible when the presentation is used as the background for the smart-board.
 
-# Extended capabilities
+If you still want to see navigation controls, they can be set by the include-in-header field in the YAML front matter. For example, the following code will set the navigation controls to yellow:
+```{yaml}
+include-in-header:
+  - text: "<style>:root { --teleprompt-nav-color: #f4f800; }</style>"
+```
 
-## The UC style provides additional capabilities for displaying content
+## Content alignment capabilities {.teleprompt-right style="--teleprompt-col-width: 80%;"}
 
-These extensions were taken from Mickaël Canouil's excellent `quarto-revealjs-coeos` package (which was actually the inspiration for this UC template).
+CSS variables are available for customizing the appearance, in the event that the default values are not suitable. Let's say the presenter should stand on the right side of the slide instead of the left, and the content should be 80% of the slide width instead of the default 66% of the width. This can be accomplished through CSS variables on a per-slide basis. In the markdown for this slide, the heading line reads:
+
+```{markdown}
+## Content alignment capabilities {.teleprompt-right style="--teleprompt-col-width: 80%;"}
+```
+
+The two custom classes used for this are:
+
+* `--teleprompt-col-width` controls the width of the content column on the left side of the slide. The default is 66%, but you can set it to any value you like (e.g., 80% as shown here).
+* `.teleprompt-right` is a class that can be added to any slide to make the content column right-aligned instead of left-aligned.
+
+## Font size capabilities
+
+The font size of each content div can be set using LaTeX font size class names:
+
+::: {.columns}
+::: {.column width="50%"}
+
+* ['.font-tiny']{.font-tiny}
+* ['.font-scriptsize']{.font-scriptsize}
+* ['.font-footnotesize']{.font-footnotesize}
+* ['.font-small']{.font-small}
+* ['.font-normalsize']{.font-normalsize}
+* ['.font-large']{.font-large}
+* ['.font-Large']{.font-Large}
+
+:::
+
+::: {.column width="50%"}
+
+* ['.font-LARGE']{.font-LARGE}
+* ['.font-huge']{.font-huge}
+* ['.font-Huge']{.font-Huge}
+* ['.font-HUGE']{.font-HUGE}
+
+:::
+:::
+
+## Call attention to a conclusion with the "bang box"
+
+The "bang box" is a custom class that can be added to any content div to make it stand out with a red border and background. This is useful for drawing attention to a key point or conclusion on the slide.
+
+::: {.bang-box}
+This content is inside a "bang box".
+:::
+
+## Give credit where credit is due with the `source-citation` class
+
+The `source-citation` class can be added to any content div to format it as a source citation, with a tiny font size, gray color, and placement at the bottom of the slide. This is useful for giving credit to sources or providing additional information without distracting from the main content of the slide.
+
+::: {.source-citation}
+Source: E. J. Payton, "teleprompt-revealjs: A quarto extension for revealjs presentations for smart boards and teleprompters." <https://www.github.com/paytonej/teleprompt-revealjs>.
+:::
+
+## Additional capabilities for displaying content
+
+The following extensions were taken from Mickaël Canouil's excellent `quarto-revealjs-coeos` package (which was actually the inspiration for this UC template).
 
 You should follow Dr. Canouil on GitHub <https://github.com/mcanouil> and/or bookmark his website <https://mickael.canouil.fr/projects>. He has a developed some very useful Quarto extensions and maintains a list of others worth looking at.
 
@@ -71,3 +131,5 @@ f(0)
 1. Importing the NumPy library.
 2. Defining a function `f` that takes an argument `x`.
 3. Returning the sine of `x` using NumPy's `sin` function.
+
+# Thank you!

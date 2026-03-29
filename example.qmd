@@ -1,6 +1,8 @@
 ---
 title: "teleprompt-revealjs Example"
-format: teleprompt-revealjs
+format: 
+  teleprompt-revealjs:
+      background-color: #12f91d
 ---
 
 # In the morning

@@ -35,7 +35,7 @@ $tangeman-tan: #eadbc1;
   --bearcats-black: #{$bearcats-black};
   --gettler-gold: #{$gettler-gold};
   --tangeman-tan: #{$tangeman-tan};
-  --teleprompt-nav-color: #{$uc-black};
+  --teleprompt-nav-color: var(--r-background-color, #{$uc-black});
 }
 
 // include UC-specific fonts. ref: https://www.uc.edu/about/marketing-communications/brand-guide/visual-identity/typography.html
@@ -99,18 +99,32 @@ $presentation-h1-font-size: 2em !default;
 
 /*
  * Enforce a left 66% content column on all regular slide bodies and keep the
- * right 20% blank for teleprompt/background use.
+ * right side blank for teleprompt/background use.
+ *
+ * Per-slide overrides (set on the <section> element via Quarto slide attributes):
+ *   --teleprompt-col-width   — column width, defaults to 66%
+ *                              e.g. {style="--teleprompt-col-width: 50%;"}
+ *   .teleprompt-right        — aligns the column to the right side instead of left
+ *                              e.g. {.teleprompt-right}
  */
 .reveal .slides section.slide {
+  --teleprompt-col-width: 66%;
   box-sizing: border-box;
 }
 
 .reveal .slides section.slide > :not(section):not(.backgrounds):not(script):not(style) {
-  width: 66%;
-  max-width: 66%;
+  display: block !important; /* override reveal.js `display: inline-block` on ul/ol/dl */
+  width: var(--teleprompt-col-width);
+  max-width: var(--teleprompt-col-width);
   margin-left: 0;
   margin-right: auto;
   box-sizing: border-box;
+}
+
+/* Right-aligned column variant. */
+.reveal .slides section.slide.teleprompt-right > :not(section):not(.backgrounds):not(script):not(style) {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 /*-- scss:mixins --*/
