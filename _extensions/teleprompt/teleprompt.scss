@@ -54,8 +54,6 @@ $font-family-serif: "Gentium Basic", "Times New Roman", serif !default;
 $presentation-heading-font: "Jost", "Open Sans", "Arial", sans-serif !default;
 
 // colors
-$backgroundColor: $uc-black !default;
-$body-bg: $uc-black !default;
 $body-color: $white !default;
 $link-color: $uc-red !default;
 $link-color-hover: $uc-dark-red !default;
@@ -79,18 +77,11 @@ $presentation-h1-font-size: 2em !default;
 
 /* custom-reveal.scss */
 
-/* Force black background everywhere */
 .reveal {
-  background-color: $uc-black !important;
+  /* Respect Quarto/reveal background-color YAML, fallback to UC black. */
+  background-color: var(--r-background-color, #{$uc-black});
   color: $main-street-mist;
   position: relative; // ensure child absolute positioning works
-}
-
-.reveal .slides section,
-.reveal .slides section.present,
-.reveal .slides section.stack > section,
-.reveal section[data-background-color] {
-  background-color: $uc-black !important;
 }
 
 .reveal h1, .reveal h2, .reveal h3 {

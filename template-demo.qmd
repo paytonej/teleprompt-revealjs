@@ -17,16 +17,39 @@ author:
       - name: TGS
         city: New York
         state: NY 
-format: teleprompt-revealjs
+format: 
+  teleprompt-revealjs:
+    title-slide-logo: "_extensions/teleprompt/images/REMADE-UC Logo.png"
 ---
 
 ## Core capabilities
 
-Here is a long sentence to demonstrate that the teleprompt-revealjs format will put all the text on the left side of the slide, taking up no more than 66% of the slide width.
+This theme provides the following:
+
+* Export of all notes content into a text file to be used as a teleprompter script.
+* A teleprompter-friendly layout that puts all content on the left side of the slide, taking up no more than 66% of the slide width, so that the presenter can stand on the right side of the slide without blocking any content.
+* A background color that can be set to any color you like, so that the presentation can be used as the background for a smart-board or teleprompter, and the text and content will appear on top of whatever you use for the background (e.g., a green screen for chroma keying).
+
+The default background color is flat black with a white text color and red links. However, all of these can be customized as needed. The content alignment and width can also be adjusted through some custom css classes.
+
+## Background color capabilities
+
+The default background color for this theme is flat black. However, the background color can be set to any color you like using the `background-color` field in the YAML front matter. For example, if your video is recorded in front of [a green screen for chroma keying](https://en.wikipedia.org/wiki/Chroma_key), you can set the background color to green so that the presentation will be invisible when used as the background for the smart-board, and your text and content will appear on top of whatever you want to use for the background.
+
+The following code will set the background color to a bright green for all the slides:
+
+```{yaml}
+format: 
+  teleprompt-revealjs:
+    background-color: "#12f91d"
+```
+
+## Navigation controls
 
 Note that the hamburger menu and the slide navigation controls are forced to the background color so that they will not be visible when the presentation is used as the background for the smart-board.
 
 If you still want to see navigation controls, they can be set by the include-in-header field in the YAML front matter. For example, the following code will set the navigation controls to yellow:
+
 ```{yaml}
 include-in-header:
   - text: "<style>:root { --teleprompt-nav-color: #f4f800; }</style>"
@@ -87,6 +110,19 @@ The `source-citation` class can be added to any content div to format it as a so
 ::: {.source-citation}
 Source: E. J. Payton, "teleprompt-revealjs: A quarto extension for revealjs presentations for smart boards and teleprompters." <https://www.github.com/paytonej/teleprompt-revealjs>.
 :::
+
+## Changing text color
+
+The default text color for this theme is white (with red links), but it should be noted that the text color of any content div can be changed using the `color` CSS property. For example, the following code will set the text color to blue:
+
+```{markdown}
+::: {.content style="color: blue;"}
+This text is blue.
+:::
+```
+
+What you want to use will depend on the background color being replaced in your video.
+
 
 ## Additional capabilities for displaying content
 

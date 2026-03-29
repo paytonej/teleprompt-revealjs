@@ -1,30 +1,24 @@
 ---
-title: "teleprompt-revealjs Example"
+title: "teleprompt-revealjs Green Screen Example"
 format: 
   teleprompt-revealjs:
-      background-color: #12f91d
+    background-color: "#12f91d"
 ---
 
-# In the morning
+# Today's Weather Report
 
-## Getting up
+Brought to you by the University of Cincinnati and the REMADE Institute.
 
-- Turn off alarm
-- Get out of bed
+## Expect cloudy skies with a chance of rain in the afternoon. Temperatures will be in the mid-70s.
 
-## Breakfast
+::: {.bang-box}
+**Don't forget to bring an umbrella!**
+:::
 
-- Eat eggs
-- Drink coffee
+## Tomorrow's forecast calls for sunny skies and warmer temperatures, with highs in the low 80s.
 
-# In the evening
+* Wear sunscreen if you plan to be outside!
+* It's a great day for a picnic or outdoor activities.
+* Remember to stay hydrated in the heat!
 
-## Dinner
-
-- Eat spaghetti
-- Drink wine
-
-## Going to sleep
-
-- Get in bed
-- Count sheep
+## That's all for today's weather report. Stay safe and enjoy the sunshine tomorrow!

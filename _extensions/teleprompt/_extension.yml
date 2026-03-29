@@ -19,6 +19,8 @@ contributes:
       html-math-method:
         method: mathjax
         url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+      filters:
+        - resources/scripts/apply-background-color.lua
       format-resources:
         - mathjax-config.js
       include-in-header:
