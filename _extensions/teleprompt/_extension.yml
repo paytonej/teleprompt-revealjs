@@ -1,0 +1,47 @@
+title: teleprompt-revealjs
+description: A Quarto Revealjs format extension for smart board and teleprompter use.
+author: Eric J Payton
+version: 1.0.0
+quarto-required: ">=1.7.0"
+contributes:
+  formats:
+    revealjs:
+      theme: teleprompt.scss
+      background-color: black
+      slide-number: c/t
+      width: 1920
+      height: 1080
+      incremental: true
+      controls: false
+      progress: false
+      history: true
+      navigation-mode: linear
+      html-math-method:
+        method: mathjax
+        url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+      format-resources:
+        - mathjax-config.js
+      include-in-header:
+        - text: |
+            <style>
+              body:has(.present.hide-logo) {
+              --logo-display: none;
+                }
+            .slide-logo {
+              display: var(--logo-display, block) !important;
+                }
+              </style>
+      include-before-body:
+        - text: |
+            <script src="mathjax-config.js"></script>
+      include-after-body:
+        - resources/ucinci-nav.js
+        - resources/coeos.html
+      template-partials:
+        - resources/revealjs-partials/title-slide.html
+        - resources/revealjs-partials/template.html
+        - resources/revealjs-partials/toc-slide.html
+      css:
+        - resources/revealjs-supplement.css
+      resources: 
+        - _extensions/paytonej/teleprompt/images/*

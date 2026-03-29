@@ -1,0 +1,60 @@
+/* revealjs-supplement.css */
+
+/* Allow centering within columns */
+.center-column-text {
+  text-align: center;
+}
+
+/* Create easy font size classes
+Based on LaTeX font size commands
+See https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_sizes
+*/
+.font-tiny {
+  font-size: 0.500em;
+}
+.font-scriptsize {
+  font-size: 0.667em;
+}
+.font-footnotesize {
+  font-size: 0.833em;
+}
+.font-small {
+  font-size: 0.905em;
+}
+.font-normalsize {
+  font-size: 1.000em;
+}
+.font-large {
+  font-size: 1.200em;
+}
+.font-Large {
+  font-size: 1.44em;
+}
+.font-LARGE {
+  font-size: 1.72em;
+}
+.font-huge {
+  font-size: 2.00em;
+}
+.font-Huge {
+  font-size: 2.25em;
+}
+.font-HUGE {
+  font-size: 2.5em;
+}
+
+.bang-box {
+  border: 3px solid #b8011c; /* UC dark red border */
+  border-radius: 12px;
+  padding: 0.25em;
+  background-color: #e00122; /* UC red background */
+  font-weight: bold;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+
+  /* centering */
+  margin: 1em auto;       /* centers the box itself */
+  text-align: center;     /* centers text inside the box */
+  width: fit-content;     /* shrink box to content width */
+  max-width: 80%;         /* keep it from stretching too wide */
+}

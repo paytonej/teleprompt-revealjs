@@ -1,0 +1,30 @@
+color:
+  palette:
+    # UC Primary Colors
+    uc_red: "#e00122"
+    black: "#000000"
+    white: "#ffffff"
+    # Secondary Colors
+    uc_dark_red: "#b8011c"
+    uc_grey: "#f3f3f3"
+    # Extended Palette
+    calhoun_maroon: "#890519"
+  background: white
+  foreground: black
+  primary: uc_red
+
+logo: 
+  small: _extensions/ucinci/images/uc-monogram.svg
+  medium: _extensions/ucinci/images/cincinnati.svg
+  large: _extensions/ucinci/images/UC_ID_PrimaryBlackRed.svg
+
+typography:
+  fonts:
+    - family: Open Sans, Arial, sans-serif
+      source: google
+    - family: Jost, Open Sans, Arial, sans-serif
+      source: google
+    - family: Gentium Book Basic, Arial, sans-serif
+      source: google
+  base: Open Sans
+  headings: Jost
