@@ -11,12 +11,13 @@ author:
       - name: University of Cincinnati
         city: Cincinnati
         state: OH
-  - name: Liz Lemon
-    jobtitle: Head Writer
+  - name: Sajjad Hasan
+    jobtitle: Graduate Associate
+    orcid: 0000-0003-2042-1016
     affiliations:
-      - name: TGS
-        city: New York
-        state: NY 
+      - name: University of Cincinnati
+        city: Cincinnati
+        state: OH
 format: 
   teleprompt-revealjs:
     title-slide-logo: "_extensions/teleprompt/images/REMADE-UC Logo.png"
