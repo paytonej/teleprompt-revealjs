@@ -88,6 +88,57 @@ $presentation-h1-font-size: 2em !default;
   color: $white;
 }
 
+/* Lock code styling so theme-level background changes do not shift code colors. */
+.reveal code {
+  color: $tangeman-tan !important;
+  background-color: $bearcats-black !important;
+}
+
+.reveal pre,
+.reveal pre code,
+.reveal pre.sourceCode code {
+  background-color: $bearcats-black !important;
+  color: $tangeman-tan !important;
+}
+
+.reveal pre,
+.reveal div.sourceCode {
+  border: 1px solid $uc-dark-red !important;
+  border-radius: 4px !important;
+}
+
+/* Override Quarto's per-token syntax-highlighting CSS (loaded as a separate file).
+   That file targets child <span> elements (code span.fu, code span.kw, etc.) with
+   explicit color values which beat inherited color on the parent <code> element.
+   Force token spans inside code blocks to a readable UC-safe color. */
+.reveal pre code span,
+.reveal code.sourceCode > span,
+.reveal code.sourceCode span {
+  color: $tangeman-tan !important;
+}
+
+/* Optional per-slide light code theme.
+   Usage in a slide header: ## My Slide {.code-light} */
+.reveal .slides section.slide.code-light code {
+  color: $calhoun-maroon !important;
+  background-color: $grey !important;
+}
+
+.reveal .slides section.slide.code-light pre,
+.reveal .slides section.slide.code-light pre code,
+.reveal .slides section.slide.code-light pre.sourceCode code,
+.reveal .slides section.slide.code-light div.sourceCode {
+  background-color: $grey !important;
+  color: $calhoun-maroon !important;
+  border-color: $uc-dark-red !important;
+}
+
+.reveal .slides section.slide.code-light pre code span,
+.reveal .slides section.slide.code-light code.sourceCode > span,
+.reveal .slides section.slide.code-light code.sourceCode span {
+  color: $calhoun-maroon !important;
+}
+
 /*
  * Enforce a left 66% content column on all regular slide bodies and keep the
  * right side blank for teleprompt/background use.
@@ -249,6 +300,17 @@ $presentation-h1-font-size: 2em !default;
   width: 1000px;
   height: auto;
   min-width: 100px;   // ensures logo is at least 100px wide
+  display: none;
+}
+
+/* Show title logo only on the active title slide. */
+body:has(.reveal .slides section.title-slide.present) .title-slide-logo {
+  display: block;
+}
+
+/* Reserve space only when a title-slide logo is present. */
+body:has(.title-slide-logo) #title-slide .teleprompt-content-column {
+  padding-bottom: min(32vh, 320px);
 }
 
 /* Hide general logo on the title slide */

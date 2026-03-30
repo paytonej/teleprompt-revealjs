@@ -123,6 +123,16 @@ This text is blue.
 
 What you want to use will depend on the background color being replaced in your video.
 
+## Light-background code block appearance option {.code-light}
+
+The previous slide showed the default code block appearance, which has a dark background and light text. However, there is also an option for a light background and dark text, which might be preferable if the code block needs to stand out against a dark background. To use this style, simply add the `code-light` class to the slide block, as shown below.
+
+```{markdown}
+## Light-background code block appearance option {.code-light}
+
+This code block has a light background and dark text, which might be preferable if the code block needs to stand out against a dark background. To use this style, simply add the `code-light` class to the slide block.
+```
+
 
 ## Additional capabilities for displaying content
 
@@ -152,7 +162,7 @@ You should follow Dr. Canouil on GitHub <https://github.com/mcanouil> and/or boo
 
 :::
 
-## Code annotation
+## Per-line code annotation
 
 ```{.python code-line-numbers="1-7|1|3|4|1-7"}
 import numpy as np # <1>

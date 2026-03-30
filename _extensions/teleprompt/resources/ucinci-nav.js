@@ -26,14 +26,17 @@ Reveal.on('slidechanged', event => {
   if(menuBtn) {
     // Set color for all child SVG paths
     menuBtn.querySelectorAll('svg path, svg line').forEach(path => {
-      path.setAttribute('stroke', #000000);
-      path.setAttribute('fill', #000000);
+      path.setAttribute('stroke', '#000000');
+      path.setAttribute('fill', '#000000');
     });
   }
 });
 
 // Function to get nav color for a slide
 function getNavColor(slide) {
+  if (typeof navColors === 'undefined') {
+    return '#E00122';
+  }
   for (const cls of Object.keys(navColors)) {
     if (slide.classList.contains(cls)) return navColors[cls];
   }
