@@ -16,11 +16,14 @@ contributes:
       progress: false
       history: true
       navigation-mode: linear
+      embed-resources: true
       html-math-method:
         method: mathjax
         url: "https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
       filters:
         - resources/scripts/apply-background-color.lua
+        - resources/extract-notes.lua
+        - resources/scripts/slide-nonincremental.lua
       format-resources:
         - mathjax-config.js
       include-in-header:
@@ -31,6 +34,10 @@ contributes:
                 }
             .slide-logo {
               display: var(--logo-display, block) !important;
+                }
+            .reveal aside.notes,
+            .reveal .slides section .notes {
+              display: none !important;
                 }
               </style>
       include-before-body:

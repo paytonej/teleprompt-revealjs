@@ -36,6 +36,20 @@ Amazingly, the scene was *improvised* by actor Ben Stein (who was the son of an 
 :::
 ```
 
+This will produce a txt file in your output folder that lists the slide the notes appear on:
+
+```{markdown}
+Slide 1
+In one of the most memorable scenes in the 1986 film "Ferris Bueller's Day Off", an economics teacher delivers a comically monotone lecture to a room of bored students. The economics teacher says:
+
+"In 1930, the Republican-controlled House of Representatives, in an effort to alleviate the effects of the... Anyone? Anyone?... Great Depression, passed the... Anyone? Anyone?... tariff bill? The Hawley-Smoot Tariff Act? Which, anyone? Raised or lowered? Raised tariffs, in an effort to collect more revenue for the federal government. Did it work? Anyone? Anyone know the effects? It did not work, and the United States sank deeper into the Great Depression."
+
+Amazingly, the scene was *improvised* by actor Ben Stein (who was the son of an economist).
+----------------------------------------
+Slide 2
+...
+```
+
 ## Example
 
 You can find usage examples here

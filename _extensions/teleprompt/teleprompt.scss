@@ -154,7 +154,7 @@ $presentation-h1-font-size: 2em !default;
   box-sizing: border-box;
 }
 
-.reveal .slides section.slide > :not(section):not(.backgrounds):not(script):not(style) {
+.reveal .slides section.slide > :not(section):not(.backgrounds):not(script):not(style):not(aside):not(.notes) {
   display: block !important; /* override reveal.js `display: inline-block` on ul/ol/dl */
   width: var(--teleprompt-col-width);
   max-width: var(--teleprompt-col-width);
@@ -164,9 +164,15 @@ $presentation-h1-font-size: 2em !default;
 }
 
 /* Right-aligned column variant. */
-.reveal .slides section.slide.teleprompt-right > :not(section):not(.backgrounds):not(script):not(style) {
+.reveal .slides section.slide.teleprompt-right > :not(section):not(.backgrounds):not(script):not(style):not(aside):not(.notes) {
   margin-left: auto;
   margin-right: 0;
+}
+
+/* Safety: speaker notes should never render in the main slide view. */
+.reveal .slides section.slide > aside.notes,
+.reveal .slides section.slide > .notes {
+  display: none !important;
 }
 
 /*-- scss:mixins --*/

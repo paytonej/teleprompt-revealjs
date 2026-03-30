@@ -30,9 +30,19 @@ This theme provides the following:
 * A teleprompter-friendly layout that puts all content on the left side of the slide, taking up no more than 66% of the slide width, so that the presenter can stand on the right side of the slide without blocking any content.
 * A background color that can be set to any color you like, so that the presentation can be used as the background for a smart-board or teleprompter, and the text and content will appear on top of whatever you use for the background (e.g., a green screen for chroma keying).
 
+::: {.fragment}
 The default background color is flat black with a white text color and red links. However, all of these can be customized as needed. The content alignment and width can also be adjusted through some custom css classes.
+:::
+
+::: {.notes}
+This is the notes content for the slide. It will be exported to a text file when the presentation is rendered, and can be used as a teleprompter script.
+:::
 
 ## Background color capabilities
+
+::: {.notes}
+The notes sections are separated by slide in the output text file. So, for example, the notes content for this slide will be in a section of the output text file that is separate from the notes content for the previous and next slides. This allows you to easily organize your teleprompter script by slide.
+:::
 
 The default background color for this theme is flat black. However, the background color can be set to any color you like using the `background-color` field in the YAML front matter. For example, if your video is recorded in front of [a green screen for chroma keying](https://en.wikipedia.org/wiki/Chroma_key), you can set the background color to green so that the presentation will be invisible when used as the background for the smart-board, and your text and content will appear on top of whatever you want to use for the background.
 
@@ -44,6 +54,10 @@ format:
     background-color: "#12f91d"
 ```
 
+::: {.notes}
+We can adjust the background color of the presentation to make it suitable for use as a background for a smart-board or teleprompter. For example, if we are recording in front of a green screen for chroma keying, we can set the background color to green so that the presentation will be invisible when used as the background for the smart-board, and our text and content will appear on top of whatever we want to use for the background.
+:::
+
 ## Navigation controls
 
 Note that the hamburger menu and the slide navigation controls are forced to the background color so that they will not be visible when the presentation is used as the background for the smart-board.
@@ -54,6 +68,10 @@ If you still want to see navigation controls, they can be set by the include-in-
 include-in-header:
   - text: "<style>:root { --teleprompt-nav-color: #f4f800; }</style>"
 ```
+
+::: {.notes}
+The navigation controls are forced to the background color by default so that they will not be visible when the presentation is used as the background for the smart-board. However, if you still want to see navigation controls, you can set their color using the `--teleprompt-nav-color` CSS variable in the `include-in-header` field in the YAML front matter. For example, you can set the navigation controls to yellow by adding code to the `include-in-header`.
+:::
 
 ## Content alignment capabilities {.teleprompt-right style="--teleprompt-col-width: 80%;"}
 
@@ -67,6 +85,10 @@ The two custom classes used for this are:
 
 * `--teleprompt-col-width` controls the width of the content column on the left side of the slide. The default is 66%, but you can set it to any value you like (e.g., 80% as shown here).
 * `.teleprompt-right` is a class that can be added to any slide to make the content column right-aligned instead of left-aligned.
+
+::: {.notes}
+If you're standing on a different side of the slide, or moving around a lot, you might want to adjust the content alignment and width. You can do this using CSS variables on a per-slide basis. For example, you can make the content column right-aligned and 80% of the slide width by adding the `teleprompt-right` class and setting the `--teleprompt-col-width` variable in the markdown for the slide.
+:::
 
 ## Font size capabilities
 
@@ -95,12 +117,21 @@ The font size of each content div can be set using LaTeX font size class names:
 :::
 :::
 
+
+::: {.notes}
+Like in LaTeX, the font size of each content div can be set using LaTeX font size class names. This allows you to easily adjust the font size of your content to make it more readable or to fit more content on the slide as needed. For example, you can use the `font-large` class to make the text a large size, or the `font-small` class to make it a smaller size.
+:::
+
 ## Call attention to a conclusion with the "bang box"
 
 The "bang box" is a custom class that can be added to any content div to make it stand out with a red border and background. This is useful for drawing attention to a key point or conclusion on the slide.
 
 ::: {.bang-box}
 This content is inside a "bang box".
+:::
+
+::: {.notes}
+The "bang box" is a custom class that can be added to any content div to make it stand out with a red border and background. This is useful for drawing attention to a key point or conclusion on the slide. For example, you can use the `bang-box` class to highlight an important message or takeaway that you want the audience to remember.
 :::
 
 ## Give credit where credit is due with the `source-citation` class
@@ -110,6 +141,11 @@ The `source-citation` class can be added to any content div to format it as a so
 ::: {.source-citation}
 Source: E. J. Payton, "teleprompt-revealjs: A quarto extension for revealjs presentations for smart boards and teleprompters." <https://www.github.com/paytonej/teleprompt-revealjs>.
 :::
+
+::: {.notes}
+The `source-citation` class can be added to any content div to format it as a source citation, with a tiny font size, gray color, and placement at the bottom of the slide. This is useful for giving credit to sources or providing additional information without distracting from the main content of the slide. For example, you can use the `source-citation` class to cite a source for an image or a piece of information that you are including on the slide.
+:::
+
 
 ## Changing text color
 
@@ -123,6 +159,10 @@ This text is blue.
 
 What you want to use will depend on the background color being replaced in your video.
 
+::: {.notes}
+The default text color for this theme is white (with red links), but you can change the text color of any content div using the `color` CSS property. For example, you can set the text color to blue by adding a `style` attribute with `color: blue;` to the content div. The choice of text color will depend on the background color you are using in your video, as you want to make sure the text is readable against the background.
+:::
+
 ## Light-background code block appearance option {.code-light}
 
 The previous slide showed the default code block appearance, which has a dark background and light text. However, there is also an option for a light background and dark text, which might be preferable if the code block needs to stand out against a dark background. To use this style, simply add the `code-light` class to the slide block, as shown below.
@@ -133,12 +173,19 @@ The previous slide showed the default code block appearance, which has a dark ba
 This code block has a light background and dark text, which might be preferable if the code block needs to stand out against a dark background. To use this style, simply add the `code-light` class to the slide block.
 ```
 
+::: {.notes}
+The previous slide showed the default code block appearance, which has a dark background and light text. However, there is also an option for a light background and dark text, which might be preferable if the code block needs to stand out against a dark background. To use this style, simply add the `code-light` class to the slide block, as shown in the markdown code. This will change the appearance of all code blocks on that slide to have a light background and dark text.
+:::
 
 ## Additional capabilities for displaying content
 
-The following extensions were taken from Mickaël Canouil's excellent `quarto-revealjs-coeos` package (which was actually the inspiration for this UC template).
+The following extensions were taken from Mickaël Canouil's excellent `quarto-revealjs-coeos` package.
 
 You should follow Dr. Canouil on GitHub <https://github.com/mcanouil> and/or bookmark his website <https://mickael.canouil.fr/projects>. He has a developed some very useful Quarto extensions and maintains a list of others worth looking at.
+
+::: {.notes}
+The extensions from `quarto-revealjs-coeos` package are loaded automatically, enabling tabsets and per-line code annotation capabilities in your presentation. You can use these features to organize your content into tabs or to annotate specific lines of code in your code blocks, which can be very helpful for explaining complex code or concepts in a clear and organized way. For example, you can create a tabset to show different pieces of content in the same area of the slide, or you can use per-line code annotation to highlight specific lines of code and provide explanations for each line.
+:::
 
 ## Tabset {.smaller}
 
@@ -179,3 +226,7 @@ f(0)
 3. Returning the sine of `x` using NumPy's `sin` function.
 
 # Thank you!
+
+::: {.notes}
+Thank you for your attention! If you find this useful, please consider starring the GitHub repository for this project at <https://www.github.com/paytonej/teleprompt-revealjs> and sharing it with your colleagues. If you have any questions, suggestions, or contributions, please feel free to reach out or submit an issue or pull request on the GitHub repository. I hope this extension helps you create engaging and effective presentations for smart boards and teleprompters!
+:::

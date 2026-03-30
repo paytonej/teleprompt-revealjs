@@ -27,13 +27,43 @@ local function file_exists(path)
   return false
 end
 
+local function dir_exists(path)
+  local ok, _, code = os.rename(path, path)
+  if ok then
+    return true
+  end
+  return code == 13
+end
+
 local function shell_quote(s)
   return "'" .. s:gsub("'", "'\\''") .. "'"
 end
 
+local function render_blocks_as_html(blocks, meta)
+  local note_doc = pandoc.Pandoc(blocks, meta)
+  return pandoc.write(note_doc, "html")
+end
+
 local function resolve_output_dir(output_file)
+  -- Quarto usually sets this for project renders; prefer it when available.
+  local quarto_out = os.getenv("QUARTO_PROJECT_OUTPUT_DIR")
+  if quarto_out and quarto_out ~= "" and dir_exists(quarto_out) then
+    return quarto_out
+  end
+
+  -- If output_file already has a directory component, use it directly.
+  local out_dir = dirname(output_file)
+  if out_dir and out_dir ~= "." and dir_exists(out_dir) then
+    return out_dir
+  end
+
   if file_exists(output_file) then
     return dirname(output_file)
+  end
+
+  -- Common Quarto project default.
+  if dir_exists("_output") then
+    return "_output"
   end
 
   local cmd = "find . -maxdepth 4 -type f -name " .. shell_quote(output_file)
@@ -56,13 +86,16 @@ function Pandoc(doc)
     Div = function(el)
       for _, class in ipairs(el.classes) do
         if class == "notes" then
-          local note_doc = pandoc.Pandoc(el.content, doc.meta)
-          local text = pandoc.write(note_doc, "plain")
+          local text = pandoc.write(pandoc.Pandoc(el.content, doc.meta), "plain")
           text = text:gsub("^%s+", ""):gsub("%s+$", "")
           if text ~= "" then
             table.insert(notes, text)
           end
-          break
+
+          -- Convert source ::: {.notes} blocks into reveal presenter notes.
+          -- These are hidden on the slide and visible in speaker view.
+          local html = render_blocks_as_html(el.content, doc.meta)
+          return pandoc.RawBlock("html", '<aside class="notes">' .. html .. '</aside>')
         end
       end
       return nil
