@@ -1,8 +1,8 @@
 # teleprompt-revealjs extension for Quarto
 
-This extension provides a `revealjs` theme designed for use with a teleprompter and/or smart board.
+This extension provides a custom `revealjs` theme for use with a teleprompter, smart board, and/or green screen. This can be useful for lecture video recording.
 
-Description: This extension provides a custom `revealjs` theme for use with a smart board and teleprompter for lecture video recording. It provides text and images on a flat black background, allowing the superposition of the video feed of the person giving the lecture. The content of the slides takes up 80% of the left side, leaving room for the person on the video feed to appear on the right side.
+It provides text and images on a flat black background, allowing the superposition of the video feed of the person giving the lecture. The content of the slides takes up 80% of the left side, leaving room for the person on the video feed to appear on the right side.
 
 Any text in a div labeled "notes" is exported as simple text that can be used in the teleprompter.
 
@@ -17,7 +17,7 @@ quarto add paytonej/teleprompt-revealjs
 This will install the extension under the `_extensions` subdirectory.
 If you're using version control, you will want to check in this directory.
 
-## Using
+## Usage
 
 To use the teleprompt-revealjs theme in your Quarto presentation, specify it as a format in your document YAML header:
 
@@ -26,6 +26,7 @@ format: teleprompt-revealjs
 ```
 
 Place your script in fenced divs labeled "notes":
+
 ```{md}
 ::: {.notes}
 In one of the most memorable scenes in the 1986 film "Ferris Bueller's Day Off", an economics teacher delivers a comically monotone lecture to a room of bored students. The economics teacher says:
@@ -36,7 +37,7 @@ Amazingly, the scene was *improvised* by actor Ben Stein (who was the son of an 
 :::
 ```
 
-This will produce a txt file in your output folder that lists the slide the notes appear on:
+This will produce a `.txt` file in your output folder that lists the slide the notes appear on:
 
 ```{markdown}
 Slide 1
@@ -50,11 +51,14 @@ Slide 2
 ...
 ```
 
-## Example
+## Examples
 
-You can find usage examples here
-- Quarto markdown documenting the capabilities can be found here: [template-demo.qmd](template-demo.qmd). Rendering this produces the following files
-- Quarto markdown for a minimal green screen example: [greenscreen-example.qmd](greenscreen-example.qmd).
+- Quarto markdown documenting the capabilities can be found here: [template-demo.qmd](template-demo.qmd). Rendering this produces the following:
+  - <https://paytonej.github.io/teleprompt-revealjs/template-demo.html>
+  - <https://paytonej.github.io/teleprompt-revealjs/template-demo_notes.txt>
+- Quarto markdown for a minimal green screen example: [greenscreen-example.qmd](greenscreen-example.qmd). Rendering this produces the following:
+  - <https://paytonej.github.io/teleprompt-revealjs/greenscreen-example.html>
+  - <https://paytonej.github.io/teleprompt-revealjs/greenscreen-example_notes.txt>
 
 ## References
 
