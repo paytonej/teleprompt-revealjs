@@ -1,0 +1,40 @@
+---
+title: "teleprompt-revealjs Green Screen Example"
+format: 
+  teleprompt-revealjs:
+    background-color: "#12f91d"
+---
+
+# Today's Weather Report
+
+Brought to you by the University of Cincinnati and the REMADE Institute.
+
+::: {.notes}
+Today's weather report is brought to you by the University of Cincinnati and the REMADE Institute. Let's look at what the forecast is for today and tomorrow.
+:::
+
+## Expect cloudy skies with a chance of rain in the afternoon. Temperatures will be in the mid-70s.
+
+::: {.bang-box}
+**Don't forget to bring an umbrella!**
+:::
+
+::: {.notes}
+We expect cloudy skies with a chance of rain in the afternoon, and temperatures will be in the mid-70s. Don't forget to bring an umbrella if you plan to be outside, as there is a chance of rain later in the day.
+:::
+
+## Tomorrow's forecast calls for sunny skies and warmer temperatures, with highs in the low 80s.
+
+* Wear sunscreen if you plan to be outside!
+* It's a great day for a picnic or outdoor activities.
+* Remember to stay hydrated in the heat!
+
+::: {.notes}
+Tomorrow's forecast calls for sunny skies and warmer temperatures, with highs in the low 80s. If you plan to be outside, make sure to wear sunscreen to protect your skin from the sun's rays. It's a great day for a picnic or outdoor activities, but remember to stay hydrated in the heat by drinking plenty of water throughout the day.
+:::
+
+## That's all for today's weather report. Stay safe and enjoy the sunshine tomorrow!
+
+::: {.notes}
+That's all for today's weather report. Stay safe and enjoy the sunshine tomorrow! If you have any questions about the forecast or need any additional information, feel free to reach out to your local weather service or check online for the latest updates. Have a great day!
+:::

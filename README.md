@@ -53,8 +53,8 @@ Slide 2
 ## Example
 
 You can find usage examples here
-- Documentation of the capabilities can be found here: [template-demo.qmd](template-demo.qmd)
-- Here is the source code for a minimal example: [example.qmd](example.qmd).
+- Quarto markdown documenting the capabilities can be found here: [template-demo.qmd](template-demo.qmd). Rendering this produces the following files
+- Quarto markdown for a minimal green screen example: [greenscreen-example.qmd](greenscreen-example.qmd).
 
 ## References
 
