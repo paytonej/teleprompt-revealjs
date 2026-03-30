@@ -1,17 +1,17 @@
 <script>
 // UCinci Quarto Reveal.js Navigation & Logo Script
 
+function getResolvedNavColor() {
+  const root = document.documentElement;
+  const styles = getComputedStyle(root);
+  const telepromptColor = styles.getPropertyValue('--teleprompt-nav-color').trim();
+  const backgroundColor = styles.getPropertyValue('--r-background-color').trim();
+  return telepromptColor || backgroundColor || '#000000';
+}
+
 Reveal.on('slidechanged', event => {
   const slide = event.currentSlide;
-
-  // Determine nav color based on slide class
-  let navColor = '#ffffff';
-  if (slide.classList.contains('official-uc-red-gradient')) navColor = '#ffffff';
-  if (slide.classList.contains('beyond-black-gradient')) navColor = '#ffffff';
-  if (slide.classList.contains('white-gradient')) navColor =  '#000000';
-  if (slide.classList.contains('uc-red-flat')) navColor = "#ffffff";
-  if (slide.classList.contains('uc-black-flat')) navColor = "#ffffff";
-  if (slide.classList.contains('black-and-white')) navColor = "#000000";
+  const navColor = getNavColor(slide);
 
   // Standard nav elements
   document.querySelectorAll(
@@ -24,10 +24,11 @@ Reveal.on('slidechanged', event => {
   // Hamburger menu button
   const menuBtn = document.querySelector('.reveal .slide-menu-button');
   if(menuBtn) {
+    menuBtn.style.color = navColor;
     // Set color for all child SVG paths
     menuBtn.querySelectorAll('svg path, svg line').forEach(path => {
-      path.setAttribute('stroke', '#000000');
-      path.setAttribute('fill', '#000000');
+      path.setAttribute('stroke', navColor);
+      path.setAttribute('fill', navColor);
     });
   }
 });
@@ -35,12 +36,12 @@ Reveal.on('slidechanged', event => {
 // Function to get nav color for a slide
 function getNavColor(slide) {
   if (typeof navColors === 'undefined') {
-    return '#E00122';
+    return getResolvedNavColor();
   }
   for (const cls of Object.keys(navColors)) {
     if (slide.classList.contains(cls)) return navColors[cls];
   }
-  return "#E00122"; // default
+  return getResolvedNavColor();
 }
 
 // Update nav elements: controls, progress, slide numbers
@@ -55,10 +56,11 @@ function updateNavElements(slide) {
 
 // Update nav elements: controls, progress, slide numbers
 function updateNavElements2(slide) {
+  const color = getNavColor(slide);
   document.querySelectorAll('.reveal .controls')
     .forEach(el => {
-      el.style.color = "#000000";
-      el.style.fill = "#000000";
+      el.style.color = color;
+      el.style.fill = color;
     });
 }
 
