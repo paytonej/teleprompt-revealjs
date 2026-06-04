@@ -1,0 +1,64 @@
+/* Hide the static annotation list — annotations appear only via Tippy popup overlay */
+.reveal dl.code-annotation-container-grid {
+  display: none;
+}
+
+/* Dark background for code-annotation Tippy popups in revealjs slides */
+.reveal .tippy-box[data-theme~="light-border"] {
+  background-color: #1e1e1e;
+  background-clip: padding-box;
+  border-color: #555;
+  color: #f0f0f0;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.6);
+}
+
+.reveal .tippy-box[data-theme~="light-border"] > .tippy-backdrop {
+  background-color: #1e1e1e;
+}
+
+/* Arrow colors — all four placements */
+.reveal .tippy-box[data-theme~="light-border"][data-placement^="top"] > .tippy-arrow::before {
+  border-top-color: #1e1e1e;
+}
+.reveal .tippy-box[data-theme~="light-border"][data-placement^="top"] > .tippy-arrow::after {
+  border-top-color: #555;
+}
+.reveal .tippy-box[data-theme~="light-border"][data-placement^="bottom"] > .tippy-arrow::before {
+  border-bottom-color: #1e1e1e;
+}
+.reveal .tippy-box[data-theme~="light-border"][data-placement^="bottom"] > .tippy-arrow::after {
+  border-bottom-color: #555;
+}
+.reveal .tippy-box[data-theme~="light-border"][data-placement^="left"] > .tippy-arrow::before {
+  border-left-color: #1e1e1e;
+}
+.reveal .tippy-box[data-theme~="light-border"][data-placement^="left"] > .tippy-arrow::after {
+  border-left-color: #555;
+}
+.reveal .tippy-box[data-theme~="light-border"][data-placement^="right"] > .tippy-arrow::before {
+  border-right-color: #1e1e1e;
+}
+.reveal .tippy-box[data-theme~="light-border"][data-placement^="right"] > .tippy-arrow::after {
+  border-right-color: #555;
+}
+
+/* SVG arrow fill */
+.reveal .tippy-box[data-theme~="light-border"] > .tippy-svg-arrow {
+  fill: #1e1e1e;
+}
+
+/* Mermaid diagram scaling — force container to fill slide width, then SVG fills container */
+.reveal .mermaid,
+.reveal .cell-output-display .mermaid,
+.reveal .mermaid-js {
+  display: block !important;
+  width: 100% !important;
+}
+
+.reveal .mermaid svg,
+.reveal .mermaid-js svg {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 80vh;
+}

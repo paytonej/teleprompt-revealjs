@@ -1,0 +1,12 @@
+<script>
+(function () {
+  'use strict';
+  // Load UC brand fonts dynamically so pandoc embed-resources does not
+  // attempt to fetch and inline them during rendering (which causes
+  // connection timeouts on restricted networks).
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Gentium+Basic:ital,wght@0,400;0,700;1,400&family=Jost:wght@400;600;700&family=Fira+Mono:wght@400;500;700&display=swap';
+  document.head.insertBefore(link, document.head.firstChild);
+})();
+</script>

@@ -38,11 +38,9 @@ $tangeman-tan: #eadbc1;
   --teleprompt-nav-color: var(--r-background-color, #{$uc-black});
 }
 
-// include UC-specific fonts. ref: https://www.uc.edu/about/marketing-communications/brand-guide/visual-identity/typography.html
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gentium+Basic:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;600;700&display=swap');
+// UC brand fonts are loaded at runtime via load-fonts.html (injected by the
+// extension) so that pandoc embed-resources does not attempt to fetch them
+// during rendering, which causes connection timeouts on restricted networks.
 
 
 /*-- scss:defaults --*/

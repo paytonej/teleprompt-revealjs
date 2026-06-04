@@ -1,5 +1,11 @@
 /* revealjs-supplement.css */
 
+/* Slide number: always white so c/t is legible on dark slides */
+.reveal .slide-number {
+  color: #ffffff;
+  background-color: transparent;
+}
+
 /* Allow centering within columns */
 .center-column-text {
   text-align: center;
@@ -62,7 +68,7 @@ See https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_sizes
 /* Source citation pinned to the bottom of the slide */
 .reveal .slides section .source-citation {
   position: absolute;
-  bottom: 0.5em;
+  bottom: -0.25em;
   left: 0;
   width: var(--teleprompt-col-width, 66%);
   max-width: var(--teleprompt-col-width, 66%);
@@ -78,4 +84,104 @@ See https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_sizes
 .reveal .slides section.teleprompt-right .source-citation {
   left: auto;
   right: 0;
+}
+
+.reveal img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensures the image is scaled properly */
+}
+
+/* Mermaid slides: center vertically, use full width, and improve contrast on dark backgrounds. */
+.reveal .slides section.mermaid-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  --mermaid-bg-color: transparent;
+  --mermaid-edge-color: #f2f2f2;
+  --mermaid-fg-color: #ffffff;
+  --mermaid-fg-color--lighter: #ffffff;
+  --mermaid-fg-color--lightest: #ffffff;
+  --mermaid-label-bg-color: #111111;
+  --mermaid-label-fg-color: #ffffff;
+  --mermaid-node-bg-color: rgba(224, 1, 34, 0.14);
+  --mermaid-node-fg-color: #ffffff;
+}
+
+.reveal .slides section.mermaid-slide .cell,
+.reveal .slides section.mermaid-slide .cell-output,
+.reveal .slides section.mermaid-slide .cell-output-display {
+  width: 100%;
+  margin: 0;
+  overflow: visible;
+}
+
+.reveal .slides section.mermaid-slide figure,
+.reveal .slides section.mermaid-slide figure > div {
+  overflow: visible;
+  margin: 0;
+  width: 100%;
+}
+
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] {
+  display: block;
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  overflow: visible !important;
+  margin: 0 auto;
+}
+
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .node rect,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .node circle,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .node ellipse,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .node polygon,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .label-container {
+  stroke: #f2f2f2 !important;
+}
+
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .nodeLabel,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .edgeLabel,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] text,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] tspan {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .nodeLabel,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .edgeLabel {
+  text-align: center !important;
+}
+
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .label foreignObject,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .edgeLabel foreignObject {
+  overflow: visible !important;
+}
+
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .nodeLabel p,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .edgeLabel p,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .nodeLabel div,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .edgeLabel div {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  line-height: 1.1 !important;
+  font-size: 1.02em !important;
+  text-align: center !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .edgePath path,
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] .flowchart-link {
+  stroke: #f2f2f2 !important;
+  fill: none !important;
+}
+
+.reveal .slides section.mermaid-slide svg[id^="mermaid-"] marker path {
+  stroke: #f2f2f2 !important;
+  fill: #f2f2f2 !important;
 }

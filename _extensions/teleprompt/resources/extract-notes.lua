@@ -59,10 +59,31 @@ local function shell_quote(s)
 end
 
 local function find_project_file()
-  local candidates = {
-    "_quarto.yml",
-    "_quarto.yaml",
-  }
+  local candidates = {}
+
+  local function add_candidate(name)
+    if not name or name == "" then
+      return
+    end
+    for _, existing in ipairs(candidates) do
+      if existing == name then
+        return
+      end
+    end
+    table.insert(candidates, name)
+  end
+
+  -- Prefer active profile files (e.g. _quarto-lecture.yml) before base config.
+  local profiles = os.getenv("QUARTO_PROFILE")
+  if profiles and profiles ~= "" then
+    for profile in profiles:gmatch("[^,%s]+") do
+      add_candidate("_quarto-" .. profile .. ".yml")
+      add_candidate("_quarto-" .. profile .. ".yaml")
+    end
+  end
+
+  add_candidate("_quarto.yml")
+  add_candidate("_quarto.yaml")
 
   local function find_in_dir(dir)
     for _, candidate in ipairs(candidates) do
@@ -172,28 +193,42 @@ local function render_blocks_as_html(blocks, meta)
 end
 
 local function resolve_output_dir(output_file)
-  -- Quarto usually sets this for project renders; prefer it when available.
-  local quarto_out = os.getenv("QUARTO_PROJECT_OUTPUT_DIR")
-  if quarto_out and quarto_out ~= "" and dir_exists(quarto_out) then
-    return quarto_out
+  -- QUARTO_DOCUMENT_PATH is the directory of the source file (absolute).
+  -- Subtract the project root to get the relative subdir, then append to
+  -- the project output-dir so the notes mirror the HTML output structure.
+  local project_dir = os.getenv("QUARTO_PROJECT_DIR") or os.getenv("QUARTO_PROJECT_ROOT")
+  local doc_path = os.getenv("QUARTO_DOCUMENT_PATH")
+  if project_dir and project_dir ~= "" and doc_path and doc_path ~= "" then
+    local norm_proj = normalize_path(project_dir):gsub("/$", "")
+    local norm_doc  = normalize_path(doc_path):gsub("/$", "")
+    local escaped   = norm_proj:gsub("[%(%)%.%%%+%-%*%?%[%]%^%$]", "%%%1")
+    local rel_sub   = norm_doc:match("^" .. escaped .. "/(.+)$")
+    local proj_out  = resolve_project_output_dir()
+    if proj_out and proj_out ~= "" then
+      return rel_sub and join_path(proj_out, rel_sub) or proj_out
+    end
   end
 
-  -- If output_file already has a directory component, use it directly.
+  -- Fallback: dirname of the output file when it carries a path component.
   local out_dir = dirname(output_file)
-  if out_dir and out_dir ~= "." and dir_exists(out_dir) then
+  if out_dir and out_dir ~= "." then
     return out_dir
+  end
+
+  local quarto_out = os.getenv("QUARTO_PROJECT_OUTPUT_DIR")
+  if quarto_out and quarto_out ~= "" then
+    return quarto_out
   end
 
   if file_exists(output_file) then
     return dirname(output_file)
   end
 
-  local project_output_dir = resolve_project_output_dir()
-  if project_output_dir and dir_exists(project_output_dir) then
-    return project_output_dir
+  local proj_out = resolve_project_output_dir()
+  if proj_out and proj_out ~= "" then
+    return proj_out
   end
 
-  -- Common Quarto project default.
   if dir_exists("_output") then
     return "_output"
   end

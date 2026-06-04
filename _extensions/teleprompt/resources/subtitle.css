@@ -1,0 +1,49 @@
+/* subtitle.css — styles for the teleprompt-subtitled format */
+
+/* ── subtitle bar ─────────────────────────────────────────────────────────── */
+/* Fixed to the bottom of the viewport so it sits outside RevealJS's slide
+   scaling transform and looks like a real caption bar. Font size is
+   viewport-relative so it stays proportional across screen sizes. */
+
+#slide-subtitle-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: none; /* shown via JS only when a slide has subtitles */
+
+  background: rgba(0, 0, 0, 0.78);
+  color: #ffffff;
+  font-family: var(--r-main-font, "Open Sans", sans-serif);
+  font-size: 1.35vw;
+  line-height: 1.5;
+  padding: 0.45em 3em;
+  text-align: center;
+  pointer-events: none;
+
+  /* subtle top border for visual separation from the slide */
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ── phantom fragments ────────────────────────────────────────────────────── */
+/* These invisible elements act as click-advances so that every && segment in
+   the notes corresponds to exactly one keypress/click.  They must remain in
+   the DOM (not display:none on the container) so RevealJS can track them as
+   real fragments, but they take no visible space. */
+
+.subtitle-phantoms {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.subtitle-phantom {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}

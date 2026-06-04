@@ -4,7 +4,7 @@ This extension provides a custom `revealjs` theme for use with a teleprompter, s
 
 It provides text and images on a flat black background, allowing the superposition of the video feed of the person giving the lecture. The content of the slides takes up 80% of the left side, leaving room for the person on the video feed to appear on the right side.
 
-Any text in a div labeled "notes" is exported as simple text that can be used in the teleprompter.
+Any text in a div labeled "notes" is exported as simple text that can be used in the teleprompter. The "notes" div and navigation elements can be toggled on and off using the `\` key. This way the notes content can be used as subtitles for self-paced learning.
 
 ## Installing
 
